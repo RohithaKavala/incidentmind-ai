@@ -8,304 +8,255 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-Frontend-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-4169E1?logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 
----
 
-## 🚨 The Problem
+> **Remember the incident. Learn from it. Resolve the next one faster.**
 
-Production incidents are rarely completely new.
+Nexora is an AI-powered incident intelligence system designed to help engineering teams understand production incidents, connect them with historical events, and generate actionable resolution guidance.
 
-Engineering teams repeatedly encounter problems such as:
-
-- Database connection pool exhaustion
-- API timeouts
-- Memory leaks
-- Service dependency failures
-- Deployment regressions
-- Authentication failures
-- Infrastructure bottlenecks
-
-However, valuable incident knowledge is often scattered across:
-
-- Incident tickets
-- Postmortems
-- Team conversations
-- Internal documentation
-- Logs
-- Individual engineer experience
-
-When a similar incident happens again, engineers may spend valuable time rediscovering solutions that the organization has already learned.
-
-### The real challenge is not only detecting incidents.
-
-**It is remembering what the organization has already learned from them.**
+Instead of treating every incident as an isolated event, Nexora creates a memory-driven workflow where previous incidents, root causes, and resolutions can inform future incident analysis.
 
 ---
 
-# 💡 The Nexora Solution
+##  Why Nexora?
 
-Nexora is an **AI-powered Incident Intelligence platform** designed to turn historical incident experience into reusable organizational memory.
+Modern engineering teams generate large amounts of incident data, logs, symptoms, and troubleshooting knowledge.
 
-It combines:
+The challenge is not only identifying what went wrong.
 
-### 🧠 Incident Analysis
-Understands incident symptoms, logs, service context, environment and severity.
+The bigger challenge is:
 
-### 🔎 Memory Recall
-Retrieves relevant historical incidents and previously successful resolutions.
+- Have we seen this before?
+- What caused it previously?
+- What resolution worked?
+- Can that knowledge be reused?
+- How can future incidents be resolved faster?
 
-### 🔗 Root-Cause Reasoning
-Connects current incidents with historical patterns and root causes.
-
-### 🛠️ Resolution Guidance
-Provides structured resolution and prevention information based on available incident knowledge.
-
-### 💾 Persistent Institutional Memory
-Retains valuable incident knowledge so that future incidents can benefit from previous experience.
+Nexora addresses these challenges through an AI-assisted incident intelligence workflow.
 
 ---
 
-# 🧠 Core Concept
+## 🧠 Core Concept
 
-Traditional incident systems primarily answer:
+```text
+CURRENT INCIDENT
+       │
+       ▼
+INCIDENT ANALYSIS
+       │
+       ▼
+MEMORY RECALL
+       │
+       ▼
+HISTORICAL INCIDENTS
+       │
+       ▼
+SIMILARITY ANALYSIS
+       │
+       ▼
+ROOT CAUSE + PREVIOUS RESOLUTION
+       │
+       ▼
+ACTIONABLE GUIDANCE
+       │
+       ▼
+RESOLUTION
+       │
+       ▼
+KNOWLEDGE RETENTION
+```
 
-> **"What is happening right now?"**
+---
 
-Nexora additionally asks:
+# ✨ Key Capabilities
 
-> **"Have we experienced something similar before, and what did we learn?"**
+## 1. 🔍 AI Incident Analysis
 
-The core workflow is:
+Nexora captures structured information about an incident, including:
+
+- Incident title
+- Service name
+- Environment
+- Severity
+- Reported symptoms
+- Business impact
+- Error logs
+- Stack traces
+
+This information becomes the context for incident analysis and memory retrieval.
+
+---
+
+## 2. 🧠 Hindsight Memory Agent
+
+Nexora uses a persistent memory layer to recall relevant historical incidents.
+
+Instead of treating every incident as a completely new problem, the system can connect the current incident with previously resolved incidents.
 
 ```text
 Current Incident
        ↓
-Incident Analysis
-       ↓
 Memory Recall
        ↓
 Historical Incident
        ↓
-Pattern Comparison
-       ↓
-Root Cause
-       ↓
-Resolution Guidance
-       ↓
-Incident Resolution
-       ↓
-New Institutional Memory
-
-✨ Key Features
-1. 🚨 Incident Workbench
-
-Submit an active production incident using:
-
-Incident title
-Service name
-Environment
-Severity
-Reported symptoms
-Business impact
-Raw error logs
-Stack traces
-
-Nexora uses this information as the context for incident analysis.
-
-2. 🧠 Hindsight Memory Agent
-
-Nexora uses a persistent memory layer to recall historical incidents.
-
-Instead of treating every incident as an isolated event, the system can connect the current incident with previous organizational experiences.
-
-Current Incident
-      ↓
-Memory Recall
-      ↓
-Historical Incident
-      ↓
 Similarity Analysis
-      ↓
+       ↓
 Previous Root Cause
-      ↓
+       ↓
 Previous Resolution
-      ↓
+       ↓
 Relevant Guidance
-3. 🔥 Warm & Cold Memory
+```
+
+This enables previously acquired operational knowledge to influence future incident investigation.
+
+---
+
+## 3. 🔥 Warm & Cold Memory
 
 Nexora supports different memory states during incident analysis.
 
-Cold Recall
+### Cold Recall
 
-The system processes an incident without an immediately relevant historical memory.
+Used for broader historical memory retrieval.
 
-Warm Recall
+```text
+Current Incident
+       ↓
+Historical Memory
+       ↓
+Relevant Past Incidents
+```
 
-The system identifies a closely related historical incident and incorporates that knowledge into the current analysis.
+### Warm Recall
 
-This helps demonstrate how persistent organizational memory can influence incident investigation.
+Used when retrieved information becomes directly relevant to the current investigation.
 
-4. 🎯 Root-Cause Attribution
-
-Nexora connects historical evidence with the current incident and presents information such as:
-
-Similarity
-Historical root cause
-Previous resolution
-Relevant evidence
-Memory influence
-Resolution reasoning
-
-The objective is to make the relationship between historical knowledge and current analysis transparent.
-
-5. 🛠️ Resolution Guidance
-
-Nexora provides structured incident-resolution information including:
-
-Immediate Actions
-
-Recommended areas for investigation or remediation.
-
-Root Cause
-
-The underlying cause associated with the incident analysis.
-
+```text
+Current Investigation
+       ↓
+Relevant Memory
+       ↓
+Contextual Guidance
+       ↓
 Resolution
+```
 
-The steps associated with resolving the incident.
+This allows useful incident knowledge to remain available throughout the investigation process.
 
-Prevention
+---
 
-Actions that can help reduce recurrence.
+# 🏗️ System Architecture
 
-Resolution Time
+```text
+                         ┌──────────────────────┐
+                         │      Nexora UI       │
+                         │   React + TypeScript │
+                         └──────────┬───────────┘
+                                    │
+                                    ▼
+                         ┌──────────────────────┐
+                         │     FastAPI API      │
+                         │       Backend        │
+                         └──────────┬───────────┘
+                                    │
+                    ┌───────────────┼───────────────┐
+                    │               │               │
+                    ▼               ▼               ▼
+             ┌────────────┐  ┌────────────┐  ┌────────────┐
+             │  Incident  │  │   Memory   │  │    LLM     │
+             │   Engine   │  │   Agent    │  │  Service   │
+             └─────┬──────┘  └─────┬──────┘  └─────┬──────┘
+                   │               │               │
+                   └───────────────┼───────────────┘
+                                   ▼
+                         ┌──────────────────────┐
+                         │     Persistence      │
+                         │   SQLite / Database  │
+                         └──────────────────────┘
+```
 
-Relevant resolution timing information when available.
+---
 
-6. 💾 Persistent Incident Memory
+# 🔄 Incident Intelligence Workflow
 
-Resolved incidents can become reusable organizational knowledge.
+Nexora follows a continuous knowledge workflow:
 
-Nexora can retain information such as:
+```text
+┌─────────────────────┐
+│   INCIDENT OCCURS   │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│   CAPTURE CONTEXT   │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│    ANALYZE EVENT    │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│    RECALL MEMORY    │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ COMPARE HISTORICAL  │
+│     INCIDENTS       │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ IDENTIFY ROOT CAUSE │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ GENERATE GUIDANCE   │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│      RESOLVE        │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│   RETAIN KNOWLEDGE  │
+└──────────┬──────────┘
+           │
+           └──────────────► NEXT INCIDENT
+```
 
-Incident context
-Root cause
-Resolution
-Prevention steps
-Memory references
-Resolution metadata
+### The Knowledge Loop
 
-This creates a continuously growing knowledge base for future incident response.
+```text
+OBSERVE
+   ↓
+REMEMBER
+   ↓
+ANALYZE
+   ↓
+RESOLVE
+   ↓
+RETAIN
+   ↓
+NEXT INCIDENT
+```
 
-🖥️ User Experience
+Over time, resolved incidents become reusable operational knowledge.
 
-Nexora provides a centralized incident intelligence dashboard containing:
+---
 
-Incident Workbench
+# 🧩 Project Structure
 
-Submit and analyze production incidents.
-
-Hindsight Memory Bank
-
-Explore retained incident memories and historical knowledge.
-
-Incident Archive
-
-Review previously resolved incidents.
-
-Memory Influence
-
-Understand how historical memories contributed to the current analysis.
-
-Incident History
-
-Review previous incidents and their outcomes.
-
-🧩 System Architecture
-┌─────────────────────────────────────────────────────────┐
-│                    NEXORA FRONTEND                      │
-│                                                         │
-│ React + TypeScript                                     │
-│                                                         │
-│ Incident Workbench                                     │
-│ Memory Explorer                                        │
-│ Incident History                                       │
-│ Analysis Cards                                         │
-│ Resolution Modal                                       │
-│ Memory Influence Panel                                 │
-└─────────────────────────┬───────────────────────────────┘
-                          │
-                          │ REST API
-                          ▼
-┌─────────────────────────────────────────────────────────┐
-│                    FASTAPI BACKEND                      │
-│                                                         │
-│ API Router                                              │
-│ Incident Endpoints                                      │
-│ Memory Endpoints                                        │
-│ Demo Endpoints                                          │
-│ Health Endpoint                                         │
-└─────────────────────────┬───────────────────────────────┘
-                          │
-                          ▼
-┌─────────────────────────────────────────────────────────┐
-│                    AGENT SERVICE                        │
-│                                                         │
-│ Incident Analysis                                      │
-│ Memory Recall                                          │
-│ Historical Comparison                                   │
-│ Root Cause Reasoning                                    │
-│ Resolution Generation                                   │
-│ Memory Retention                                       │
-└───────────────┬───────────────────────┬─────────────────┘
-                │                       │
-                ▼                       ▼
-      ┌──────────────────┐    ┌──────────────────┐
-      │ Hindsight Memory │    │   LLM Service    │
-      │      Layer       │    │                  │
-      │                  │    │ AI Reasoning     │
-      │ Recall           │    │ Analysis         │
-      │ Retain           │    │ Resolution       │
-      │ Memory Context   │    │ Generation       │
-      └──────────────────┘    └──────────────────┘
-                │                       │
-                └────────────┬──────────┘
-                             ▼
-                  ┌────────────────────┐
-                  │     Database       │
-                  │                    │
-                  │ Incidents          │
-                  │ Analysis           │
-                  │ Resolutions        │
-                  │ Memory Audits      │
-                  └────────────────────┘
-🛠️ Technology Stack
-Frontend
-Technology	Purpose
-React	User interface
-TypeScript	Type-safe frontend development
-Vite	Development and build tooling
-CSS	Dashboard styling
-Backend
-Technology	Purpose
-Python	Backend development
-FastAPI	REST API
-SQLAlchemy	Database ORM
-Pydantic	Data validation
-Pytest	Automated testing
-AI & Memory
-Technology	Purpose
-Hindsight	Persistent memory layer
-LLM Service	AI-powered analysis and reasoning
-Agent Service	Incident intelligence orchestration
-Database
-Technology	Purpose
-PostgreSQL	Persistent application data
-SQLAlchemy	Database abstraction
-📁 Project Structure
+```text
 Nexora/
 │
 ├── backend/
-│   │
 │   ├── app/
 │   │   ├── api/
 │   │   │   └── v1/
@@ -343,7 +294,7 @@ Nexora/
 │   └── requirements.txt
 │
 ├── frontend/
-│   │
+│   ├── public/
 │   ├── src/
 │   │   ├── api/
 │   │   │   └── client.ts
@@ -373,308 +324,212 @@ Nexora/
 ├── .gitignore
 ├── pytest.ini
 └── README.md
-🚀 Getting Started
-Prerequisites
+```
 
-Install:
+---
 
-Python 3.10+
-Node.js
-npm
-PostgreSQL
-Git
-1. Clone the Repository
+# 🛠️ Technology Stack
+
+| Layer | Technology |
+|---|---|
+| Frontend | React, TypeScript, Vite |
+| Backend | Python, FastAPI |
+| ORM | SQLAlchemy |
+| Validation | Pydantic |
+| AI | LLM-powered analysis |
+| Memory | Hindsight-based memory |
+| Database | SQLite |
+| Testing | Pytest |
+| Package Management | npm, pip |
+| Version Control | Git, GitHub |
+
+---
+
+# ⚙️ Getting Started
+
+## 1. Clone the Repository
+
+```bash
 git clone https://github.com/RohithaKavala/Nexora.git
 cd Nexora
-2. Backend Setup
+```
+
+---
+
+# 🐍 Backend Setup
+
+Navigate to the backend:
+
+```bash
 cd backend
+```
 
 Create a virtual environment:
 
-Windows
+```bash
 python -m venv venv
+```
 
-Activate it:
+Activate the environment on Windows:
 
-.\venv\Scripts\activate
+```powershell
+.\venv\Scripts\Activate.ps1
+```
 
 Install dependencies:
 
+```bash
 pip install -r requirements.txt
-3. Configure Environment Variables
+```
 
 Create the environment file:
 
-copy .env.example .env
+```powershell
+Copy-Item .env.example .env
+```
 
-Then configure the required values inside:
+Start the FastAPI server:
 
-backend/.env
-
-Depending on your configuration, this may include:
-
-Database connection
-LLM configuration
-Hindsight configuration
-Application settings
-
-⚠️ Never commit API keys, passwords, tokens or other secrets to GitHub.
-
-4. Start the Backend
-
-From the backend directory:
-
+```bash
 uvicorn app.main:app --reload
+```
 
-FastAPI documentation is available at:
+The backend will be available at:
 
+```text
+http://127.0.0.1:8000
+```
+
+Interactive API documentation:
+
+```text
 http://127.0.0.1:8000/docs
-5. Start the Frontend
+```
 
-Open another terminal:
+---
 
+# 💻 Frontend Setup
+
+Open another terminal and navigate to the frontend:
+
+```bash
 cd frontend
+```
 
 Install dependencies:
 
+```bash
 npm install
+```
 
 Start the development server:
 
+```bash
 npm run dev
+```
 
-Open the local URL displayed by Vite.
+Vite will display the local frontend URL in the terminal.
 
-🧪 Testing
+---
 
-Run the backend tests with:
+# 🔐 Environment Configuration
 
+Nexora includes an environment template:
+
+```text
+backend/.env.example
+```
+
+Create your local `.env` file from this template.
+
+Keep private credentials and API keys inside `.env`.
+
+Never commit secrets to the repository.
+
+---
+
+# 🧪 Testing
+
+Run the backend test suite:
+
+```bash
 pytest
+```
 
-Or:
+Run tests with detailed output:
 
-pytest backend/tests
-🔄 Incident Intelligence Workflow
+```bash
+pytest -v
+```
 
-A typical Nexora workflow:
+---
 
-1. Submit Incident
-Incident
-   ↓
-Service
-   ↓
-Environment
-   ↓
-Severity
-   ↓
-Symptoms
-   ↓
-Logs / Stack Trace
-2. Analyze
+# 🔌 API Overview
 
-The Nexora agent processes the incident context.
+Nexora exposes APIs for health checks, incident operations, memory operations, and demonstration flows.
 
-3. Recall
+### Health
 
-The memory layer searches for relevant historical incidents.
+```text
+GET /api/v1/health
+```
 
-4. Compare
+### Incidents
 
-Historical incidents are compared with the current incident.
+Incident creation, retrieval, analysis, and resolution operations are exposed through the incident API.
 
-5. Explain
+### Memory
 
-Nexora surfaces:
+Memory retrieval and historical incident exploration are exposed through the memory API.
 
-Similarity
-Historical root cause
-Previous resolution
-Memory influence
-Relevant evidence
-6. Resolve
+### Demo
 
-The engineer receives structured resolution guidance.
+The demo API provides a convenient way to demonstrate the incident intelligence workflow.
 
-7. Retain
+For the complete interactive API reference, run the backend and open:
 
-The resolved incident can become reusable organizational knowledge.
+```text
+http://127.0.0.1:8000/docs
+```
 
-🎯 Example Incident
-Incident
-Payment Gateway Timeout & Pool Exhaustion
-Service
-payment-api
-Environment
-production
-Severity
-CRITICAL / SEV-1
-Symptoms
-HTTP 504 Gateway Timeouts on /v1/checkout.
-Elevated latency.
-Sudden drop in completed order transactions.
-Error
-Connection checkout timed out.
-Connection is not available.
-Request timed out after 30000ms.
+---
 
-Nexora can use this context to identify relevant historical incidents involving similar service-resource or database connection failures.
+# 📐 Design Principles
 
-🧠 Institutional Memory
+## Context Over Isolation
 
-Consider two incident-response workflows.
+An incident is analyzed using its surrounding operational context instead of treating it as an isolated event.
 
-Without persistent memory
-Incident
-   ↓
-Search previous tickets
-   ↓
-Search documentation
-   ↓
-Ask experienced engineers
-   ↓
-Investigate
-   ↓
-Resolve
-With Nexora
-Incident
-   ↓
-Nexora Analysis
-   ↓
-Historical Memory Recall
-   ↓
-Previous Root Cause
-   ↓
-Previous Resolution
-   ↓
-Actionable Guidance
-   ↓
-Resolve
-   ↓
-Retain Knowledge
+## Memory Over Repetition
 
-The goal is to make organizational experience reusable.
+Previously resolved incidents can provide useful information for future investigations.
 
-🔐 Security
+## Evidence Over Assumptions
 
-Nexora follows security-conscious configuration practices.
+Historical incidents, symptoms, logs, and retrieved context provide the basis for analysis.
 
-Sensitive credentials should be stored in environment variables.
+## Resolution Over Diagnosis Alone
 
-.env
+The system focuses not only on identifying possible causes but also on producing actionable resolution guidance.
 
-should remain local and should not be committed.
+## Learning Over Time
 
-Only safe configuration examples should be stored in:
+Resolved incidents become part of the organization's operational knowledge.
 
-.env.example
+---
 
-Production deployments should use secure credentials, appropriate access controls and encrypted connections where applicable.
+# 📌 Repository
 
-📊 Explainability
-
-Nexora is designed to make memory-assisted incident analysis understandable.
-
-The relationship between the current incident and historical knowledge can be represented as:
-
-Current Incident
-       ↓
-Historical Memory
-       ↓
-Similarity
-       ↓
-Root Cause
-       ↓
-Resolution
-       ↓
-Prevention
-
-This helps engineers understand how historical information contributes to the analysis.
-
-🏗️ Design Principles
-1. Memory over repetition
-
-Avoid repeatedly solving problems that the organization has already encountered.
-
-2. Context over isolated alerts
-
-An alert is only one part of the overall incident.
-
-3. Evidence over unexplained output
-
-Historical context and reasoning should be visible to engineers.
-
-4. Resolution becomes knowledge
-
-A resolved incident can provide value during future incidents.
-
-5. Human-in-the-loop
-
-Nexora assists engineers while keeping humans involved in investigation and decision-making.
-
-🔮 Future Development
-
-Potential extensions include:
-
-Real-time monitoring integrations
-Prometheus and Grafana integration
-Cloud provider integrations
-Slack and Microsoft Teams integration
-Jira and ServiceNow integration
-Advanced semantic incident search
-Automated incident summarization
-Incident trend analytics
-MTTR analytics
-Role-based access control
-Knowledge graph integration
-Production observability
-Multi-service incident correlation
-🌟 Vision
-
-Nexora is built around a simple idea:
-
-Every production incident should make the organization smarter.
-
-Instead of allowing valuable incident knowledge to disappear after resolution, Nexora turns operational experience into reusable institutional memory.
-
-             INCIDENT
-                 │
-                 ▼
-            UNDERSTAND
-                 │
-                 ▼
-              RECALL
-                 │
-                 ▼
-               LEARN
-                 │
-                 ▼
-              RESOLVE
-                 │
-                 ▼
-              RETAIN
-                 │
-                 ▼
-        ORGANIZATION GETS
-             SMARTER
-                 │
-                 └──────────────► NEXT INCIDENT
-📌 Repository
-
-Nexora
+**Nexora**
 
 GitHub:
 
 https://github.com/RohithaKavala/Nexora
 
-⚡ Nexora
-Remember the incident. Learn from it. Resolve the next one faster.
+---
 
-From incident response to institutional intelligence.
+# ⚡ Nexora
 
+> **Remember the incident. Learn from it. Resolve the next one faster.**
 
-After pasting, save `README.md`, then run:
-
-```powershell
-git add README.md
-git commit -m "Add Nexora project documentation"
-git push
+**From incident response to institutional intelligence.**
