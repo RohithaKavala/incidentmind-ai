@@ -124,11 +124,9 @@ The similarity score represents the reported retrieval similarity in this demons
 ### 1. Clone the Repository
 
 ```bash
-git clone <YOUR_REPOSITORY_URL>
-cd <YOUR_PROJECT_DIRECTORY>
+git clone https://github.com/RohithaKavala/Nexora.git
+cd Nexora
 ```
-
-Replace the placeholders with your actual repository URL and project directory.
 
 ### 2. Start the Backend
 
