@@ -12,12 +12,12 @@ Built with **FastAPI, React, TypeScript, and Hindsight memory**, the system demo
 
 ## Key Features
 
-- **Incident Analysis** — Processes incident details and available diagnostic evidence.
-- **Root Cause Identification** — Identifies likely causes based on the available evidence.
-- **Persistent Incident Memory** — Retains verified root causes and resolutions for future investigations.
-- **Historical Incident Recall** — Retrieves relevant past incidents when similar problems occur.
-- **Context-Aware Recommendations** — Uses current evidence and recalled knowledge to recommend corrective actions.
-- **Fallback Support** — Supports heuristic analysis and local database fallback behavior when optional services are unavailable.
+- **Incident Analysis** - Processes incident details and available diagnostic evidence.
+- **Root Cause Identification** - Identifies likely causes based on the available evidence.
+- **Persistent Incident Memory** - Retains verified root causes and resolutions for future investigations.
+- **Historical Incident Recall** - Retrieves relevant past incidents when similar problems occur.
+- **Context-Aware Recommendations** - Uses current evidence and recalled knowledge to recommend corrective actions.
+- **Fallback Support** - Supports heuristic analysis and local database fallback behavior when optional services are unavailable.
 
 ## System Architecture
 
