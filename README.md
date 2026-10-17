@@ -1,4 +1,4 @@
-# ⚡ Nexora — AI Incident Intelligence & Institutional Memory
+# ⚡ Nexora - AI Incident Intelligence & Institutional Memory
 
 > **Nexora transforms production incident history into institutional memory, helping engineering teams understand incidents, recall previous solutions, and improve incident resolution.**
 
